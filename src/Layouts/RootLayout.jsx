@@ -1,8 +1,8 @@
-import { Outlet } from "react-router";
-import Login from "../pages/Login/Login";
+import { Outlet } from 'react-router';
 
-export default function RootLayout() {
-    return <>
-        <Outlet />
-    </>
+// RootLayout currently doesn't need any extra markup but we keep it
+// so that we could easily add wrappers (e.g. theme provider) later.
+// It also forwards children correctly.
+export default function RootLayout({ children }) {
+  return <>{children || <Outlet />}</>;
 }
