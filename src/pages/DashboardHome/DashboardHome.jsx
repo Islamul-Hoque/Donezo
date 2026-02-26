@@ -4,6 +4,7 @@ import { FiArrowUpRight, FiPlus, FiPlay } from 'react-icons/fi';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { Video } from 'lucide-react';
+  import { Pause, Square } from 'lucide-react';
 
 const DashboardHome = () => {
   const [overview, setOverview] = useState(null);
@@ -218,13 +219,35 @@ const DashboardHome = () => {
         </div>
 
         {/* Time Tracker */}
-        <div className="bg-[#1B5E3F] rounded-[40px] shadow-sm p-8 flex flex-col items-center justify-center text-white relative overflow-hidden">
-          <h3 className="font-bold text-lg mb-6">Time Tracker</h3>
-          <div className="text-4xl font-bold mb-8 italic">01:24:08</div>
-          <button className="w-14 h-14 bg-white/10 rounded-full flex items-center justify-center border border-white/10">
-            <FiPlay className="text-2xl fill-white" />
+    
+
+
+    <div className="rounded-3xl h-[320px] relative overflow-hidden shadow-lg group">
+
+      <img 
+        src="/asideImg2.png" 
+        alt="Time Tracker Background" 
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+      
+  
+      <div className="relative z-10 p-8 h-full flex flex-col items-center justify-between text-white">
+        <h3 className="text-xl font-medium opacity-90 w-full text-left"> Time Tracker  </h3>
+        <h2 className="text-[56px] font-bold tracking-tight leading-none italic">  01:24:08  </h2>
+        <div className="flex gap-5">
+          <button className="w-14 h-14 cursor-pointer bg-white text-[#1B5E3F] rounded-full flex items-center justify-center hover:bg-gray-100 transition-all shadow-xl active:scale-90">
+            <Pause size={24} fill="currentColor" />
+          </button>
+          <button className="w-14 h-14 bg-[#E23E3E] cursor-pointer text-white rounded-full flex items-center justify-center hover:bg-[#c93535] transition-all shadow-xl active:scale-90">
+            <Square size={20} fill="currentColor" />
           </button>
         </div>
+      </div>
+
+
+
+    </div>
+
       </div>
     </div>
   );

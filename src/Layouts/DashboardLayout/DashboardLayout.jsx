@@ -83,8 +83,8 @@ const DashboardLayout = () => {
                          style={{ backgroundImage: `url(${asideImg})` }}>
                         <div className="absolute inset-0 bg-black/20 z-0"></div>
                         <div className="relative z-10">
-                            <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center mb-4 shadow-sm">
-                                <img src="/miniPic.png" alt="mini-logo" className="w-6" />
+                            <div className="w-13 h-13 rounded-full flex items-center justify-center mb-4 shadow-sm">
+                                <img src="/miniPic.png" alt="mini-logo" className="" />
                             </div>
                             <h4 className="text-white text-lg leading-tight font-medium">Download our</h4>
                             <h4 className="text-white text-lg font-bold">Mobile App</h4>
