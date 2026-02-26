@@ -1,3 +1,7 @@
 /* eslint-disable */
 @import "tailwindcss";
 @plugin "daisyui";
+
+.container {
+  @apply mx-auto px-4;
+}
