@@ -2,8 +2,8 @@ import React from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import {
-    FiGrid, // Dashboard এর জন্য সঠিক আইকন
-    FiCheckSquare, // Tasks এর জন্য
+    FiGrid, 
+    FiCheckSquare, 
     FiCalendar,
     FiBarChart2,
     FiUsers,
@@ -28,7 +28,7 @@ const DashboardLayout = () => {
     return (
         <div className="flex h-screen bg-white p-4 font-sans overflow-hidden">
             {/* Sidebar */}
-            <aside className="w-[280px] bg-[#F3F4F6] rounded-[32px] flex flex-col py-8 px-6 h-full overflow-y-auto">
+            <aside className="w-[280px] bg-[#F3F4F6] rounded-2xl flex flex-col py-8 px-6 h-full overflow-y-auto">
                 {/* Logo Section */}
                 <div className="flex items-center gap-3 mb-10 ml-2 shrink-0">
                     <img src="/donezo.png" alt="logo" className="w-8" />
@@ -90,7 +90,7 @@ const DashboardLayout = () => {
                             <h4 className="text-white text-lg font-bold">Mobile App</h4>
                             <p className="text-gray-300 text-[11px] mt-1">Get easy in another way</p>
                         </div>
-                        <button className="relative z-10 mt-4 w-full bg-[#1B5E3F]/80 backdrop-blur-md text-white py-2.5 rounded-2xl text-sm font-medium hover:bg-[#1B5E3F] transition-all">
+                        <button className="relative cursor-pointer z-10 mt-4 w-full bg-[#1B5E3F]/80 backdrop-blur-md text-white py-2.5 rounded-2xl text-sm font-medium hover:bg-[#1B5E3F] transition-all">
                             Download
                         </button>
                     </div>
@@ -98,10 +98,10 @@ const DashboardLayout = () => {
             </aside>
 
             {/* Main Area */}
-            <main className="flex-1  flex flex-col px-4 overflow-hidden">
+            <main className="flex-1 flex flex-col px-4 overflow-hidden">
                 {/* Header */}
                 <header className="flex bg-[#F3F4F6] justify-between rounded-2xl items-center py-4 px-4 mb-2 shrink-0">
-                    {/* Search Field Fix */}
+                    
                     <div className="relative group">
                         <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
                             <FiSearch className="text-lg" />
@@ -138,7 +138,7 @@ const DashboardLayout = () => {
                 </header>
 
                 {/* Content Area */}
-                <div className="flex-1 overflow-y-auto pr-2">
+                <div className="flex-1 overflow-y-auto">
                     <Outlet />
                 </div>
             </main>
