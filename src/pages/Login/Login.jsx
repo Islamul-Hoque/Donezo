@@ -23,7 +23,7 @@ const Login = () => {
 
     setValue('email', demoEmail);
     setValue('password', demoPass);
-    setValue('terms', true); 
+    setValue('terms', true);
 
     await processLogin({ email: demoEmail, password: demoPass });
   };
@@ -133,10 +133,12 @@ const Login = () => {
 
               {/* Checkbox */}
               <div className="flex flex-col h-[50px] justify-center">
-                <label className="flex items-center gap-3 cursor-pointer group">
-                  <input type="checkbox" {...register('terms', { required: 'Please accept terms to continue' })} className="w-4 h-4 rounded border-gray-300 accent-[#1B5E3F]" />
+                <div className="flex items-center gap-3">
+                  <label className="flex items-center gap-3  group">
+                    <input type="checkbox" {...register('terms', { required: 'Please accept terms to continue' })} className="w-4 h-4 rounded cursor-pointer border-gray-300 accent-[#1B5E3F]" />
+                  </label>
                   <span className="text-xs text-gray-500 font-medium group-hover:text-gray-700">I accept the Terms and Conditions</span>
-                </label>
+                </div>
                 {errors.terms && <p className="text-red-500 text-[10px] ml-7 font-bold">{errors.terms.message}</p>}
               </div>
 
