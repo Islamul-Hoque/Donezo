@@ -119,15 +119,15 @@ const DashboardLayout = () => {
                     <div className="flex items-center gap-6">
                         <div className="flex items-center gap-2">
                             <div className="p-2.5 bg-white rounded-full text-gray-500 cursor-pointer border border-transparent hover:border-gray-200 transition-all"><FiMail /></div>
-                            <div className="p-2.5 bg-white rounded-full text-gray-500 cursor-pointer border-transparent hover:border-gray-200 transition-all"><FiBell /></div>
+                            <div className="p-2.5 bg-white rounded-full text-gray-500 cursor-pointer border border-transparent hover:border-gray-200 transition-all"><FiBell /></div>
                         </div>
 
-                        {/* Profile Section Fix: Image first, then info */}
-                        <div className="flex items-center gap-3">
+                        {/* Profile  */}
+                        <div className="flex items-center gap-1">
                             <img 
-                                src="https://i.pravatar.cc/150?u=michael" 
+                                src="/user.png" 
                                 alt="user" 
-                                className="w-11 h-11 rounded-full border-2 border-white shadow-sm"
+                                className="w-13  rounded-full"
                             />
                             <div className="flex flex-col">
                                 <p className="text-sm font-bold text-gray-800 leading-none">{user?.name || "Totok Michael"}</p>
