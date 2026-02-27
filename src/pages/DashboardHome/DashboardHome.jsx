@@ -12,6 +12,12 @@ const statusStyles = {
   inactive: "bg-red-50 text-red-600 border-red-100",
 };
 
+const indicators = [
+  { label: 'Completed', color: 'bg-[#1B5E3F]', type: 'solid' },
+  { label: 'In Progress', color: 'bg-[#064E3B]', type: 'solid' },
+  { label: 'Pending', color: 'bg-transparent', type: 'striped' }
+];
+
 const DashboardHome = () => {
   const [overview, setOverview] = useState(null)
   const [analytics, setAnalytics] = useState([])
@@ -94,7 +100,7 @@ const DashboardHome = () => {
         <div className="bg-white md:col-span-2 rounded-2xl shadow-sm p-5 border border-gray-50 flex flex-col h-70">
           <h2 className="text-md font-bold mb-6 text-gray-900">Project Analytics</h2>
 
-          <div className="flex items-end justify-between gap-x-3 h-full">
+          <div className="flex items-end justify-between gap-x-4 h-full">
             {analytics.map((item, index) => {
               const heightFactor = (item.views / maxViews) * 100;
 
@@ -173,6 +179,7 @@ const DashboardHome = () => {
         {/* Left Side  */}
         <div className="col-span-1 lg:col-span-3">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Team Collaboration */}
             <div className="bg-white h-76 overflow-auto rounded-2xl shadow-sm p-3 border border-gray-50">
               <div className="flex justify-between items-center mb-8">
                 <h3 className="font-semibold text-[1.1rem] text-gray-900">Team Collaboration</h3>
@@ -202,75 +209,37 @@ const DashboardHome = () => {
             </div>
 
             {/* Project Progress */}
-            <div className="bg-white rounded-2xl shadow-sm p-5 flex flex-col justify-between h-76 border border-gray-50">
-              <h3 className="font-semibold text-[1.1rem] text-gray-900">Project Progress</h3>
-              <div className="relative flex flex-col items-center justify-center pt-8">
-                <svg width="240" height="130" viewBox="0 0 200 110">
-                  <defs>
-                    <linearGradient id="gradientGreen" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="#1B5E3F" />
-                      <stop offset="100%" stopColor="#2D7A54" />
-                    </linearGradient>
-                  </defs>
-
-                  <path
-                    d="M 20 100 A 80 80 0 0 1 180 100"
-                    fill="none"
-                    stroke="#E5E7EB"
-                    strokeWidth="26"
-                    strokeLinecap="butt"
-                    strokeDasharray="4, 4"
-                  />
-
-                  <path
-                    d="M 20 100 A 80 80 0 0 1 180 100"
-                    fill="none"
-                    stroke="#064e3b"
-                    strokeWidth="28"
-                    strokeLinecap="round"
-                    strokeDasharray="251"
-                    strokeDashoffset="-130"
-                  />
-
-                  <path
-                    d="M 20 100 A 80 80 0 0 1 180 100"
-                    fill="none"
-                    stroke="#1B5E3F"
-                    strokeWidth="28"
-                    strokeLinecap="round"
-                    strokeDasharray="251"
-                    strokeDashoffset="128"
-                  />
+            <div className="bg-white rounded-2xl shadow-sm p-6 flex flex-col justify-between h-76 border border-gray-50">
+              <h3 className="font-bold text-[1.1rem] text-gray-900">Project Progress</h3>
+              <div className="relative flex flex-col items-center justify-center mt-4">
+                <svg width="220" height="120" viewBox="0 0 200 110">
+                  <defs> <pattern id="dense-striped-pattern" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(45)"> <line x1="0" y1="0" x2="0" y2="5" stroke="#cbd5e1" strokeWidth="2.5" /> </pattern> </defs>
+                  <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none"  stroke="url(#dense-striped-pattern)" strokeWidth="28" strokeLinecap="round"  />
+                  <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none"  stroke="#064E3B" strokeWidth="28" strokeLinecap="round" strokeDasharray="251"  strokeDashoffset="75"  />
+                  <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none"  stroke="#1B5E3F"  strokeWidth="28"  strokeLinecap="round"  strokeDasharray="251"  strokeDashoffset="150" />
                 </svg>
-
-                <div className="absolute top-[55%] flex flex-col items-center">
-                  <span className="text-[54px] font-extrabold text-gray-900 leading-none">41%</span>
-                  <span className="text-xs text-gray-400 font-bold tracking-wider mt-1 uppercase">Project Ended</span>
+                <div className="absolute top-[50%] flex flex-col items-center">
+                  <span className="text-[52px] font-bold text-gray-900 leading-none">41%</span>
+                  <span className="text-[12px] text-gray-400 font-semibold mt-1">Project Ended</span>
                 </div>
               </div>
 
-              <div className="flex justify-between items-center mt-6 px-1">
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-[#1B5E3F]"></div>
-                  <span className="text-[13px] font-semibold text-gray-500">Completed</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-[#064e3b]"></div>
-                  <span className="text-[13px] font-semibold text-gray-500">In Progress</span>
-                </div>
-                <div className="flex items-center gap-2">
-
-                  <div className="w-3 h-3 rounded-full bg-gray-200 overflow-hidden relative">
-                    <div className="absolute inset-0 bg-[repeating-linear-gradient(45deg,transparent,transparent_1px,#94a3b8_1px,#94a3b8_2px)]"></div>
+              <div className="flex justify-between items-center mt-6">
+                {indicators.map((item, index) => ( 
+                  <div key={index} className="flex items-center gap-1">
+                    {item.type === 'striped' ? (
+                      <div className="w-3 h-3 rounded-full border border-gray-300 overflow-hidden relative">
+                        <div className="absolute inset-0 bg-[repeating-linear-gradient(-45deg,transparent,transparent_1px,#94a3b8_1px,#94a3b8_2px)]"></div>
+                      </div>
+                    ) : ( <div className={`w-3 h-3 rounded-full ${item.color}`}></div>)} <span className="text-[12px] md:text-sm font-medium text-gray-600"> {item.label}  </span>
                   </div>
-                  <span className="text-[13px] font-semibold text-gray-500">Pending</span>
-                </div>
+                ))}
               </div>
             </div>
 
           </div>
         </div>
-      
+
         {/* Right Side  */}
         <div className="col-span-1 w-full"> 
           <div className="rounded-3xl w-full h-76 relative overflow-hidden shadow-lg group">
