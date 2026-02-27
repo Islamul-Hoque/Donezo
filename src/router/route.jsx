@@ -9,23 +9,15 @@ import RequireAuth from '../components/RequireAuth';
 export const router = createBrowserRouter([
   {
     path: '/login',
-    element: (
-      <RootLayout>
-        <Login />
-      </RootLayout>
-    ),
+    element: <RootLayout> <Login /> </RootLayout>,
   },
   {
     path: '/',
-    element: (
-      <RequireAuth>
-        <DashboardLayout />
-      </RequireAuth>
-    ),
+    element: <RequireAuth> <DashboardLayout /> </RequireAuth>,
     children: [
       {
         index: true,
-        element: <DashboardHome />,
+        Component: DashboardHome ,
       },
     ],
   },
@@ -35,6 +27,4 @@ export const router = createBrowserRouter([
   },
 ]);
 
-// also provide default export for compatibility with certain
-// imports or HMR situations where the named export might be lost
 export default router;
