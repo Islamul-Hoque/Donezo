@@ -1,24 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react'; 
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
-import {
-    FiGrid, 
-    FiCheckSquare, 
-    FiCalendar,
-    FiBarChart2,
-    FiUsers,
-    FiSettings,
-    FiHelpCircle,
-    FiLogOut,
-    FiSearch,
-    FiMail,
-    FiBell
-} from 'react-icons/fi';
-import asideImg from '../../../public/asideImg.png';
+import {FiGrid, FiCheckSquare, FiCalendar, FiBarChart2, FiUsers,  FiSettings, FiHelpCircle, FiLogOut, FiSearch, FiMail, FiBell, FiMenu, FiX } from 'react-icons/fi';
 
 const DashboardLayout = () => {
     const { logout, user } = useAuth();
     const navigate = useNavigate();
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false); 
 
     const handleLogout = () => {
         logout();
@@ -26,9 +14,25 @@ const DashboardLayout = () => {
     };
 
     return (
-        <div className="flex h-screen bg-white p-4 font-sans overflow-hidden">
+        <div className="flex h-screen bg-white md:p-4 p-2 font-sans overflow-hidden relative">
+            {isSidebarOpen && (
+                <div 
+                    className="fixed inset-0 bg-black/50 z-40 md:hidden" 
+                    onClick={() => setIsSidebarOpen(false)}
+                ></div>
+            )}
+
             {/* Sidebar */}
-            <aside className="w-[280px] bg-[#F3F4F6] rounded-2xl flex flex-col py-8 px-6 h-full overflow-y-auto">
+            <aside className={`
+                fixed inset-y-0 left-0 z-50 w-[280px] bg-[#F3F4F6] transition-transform duration-300 transform
+                md:relative md:translate-x-0 md:rounded-2xl flex flex-col py-8 px-6 h-full overflow-y-auto
+                ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
+            `}>
+                {/* Close Button for Mobile */}
+                <button className="md:hidden absolute right-4 top-4 text-gray-500" onClick={() => setIsSidebarOpen(false)}>
+                    <FiX size={24} />
+                </button>
+
                 {/* Logo Section */}
                 <div className="flex items-center gap-3 mb-10 ml-2 shrink-0">
                     <img src="/donezo.png" alt="logo" className="w-8" />
@@ -41,7 +45,7 @@ const DashboardLayout = () => {
                         <p className="text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-4 ml-4">Menu</p>
                         <ul className="space-y-1">
                             <li>
-                                <NavLink to="/" className={({ isActive }) =>
+                                <NavLink to="/" onClick={() => setIsSidebarOpen(false)} className={({ isActive }) =>
                                     `flex items-center gap-4 px-4 py-3 rounded-2xl transition-all relative ${
                                         isActive ? 'text-black font-medium' : 'text-gray-400 hover:text-gray-600'
                                     }`
@@ -55,7 +59,6 @@ const DashboardLayout = () => {
                                     )}
                                 </NavLink>
                             </li>
-
                             <li className="flex items-center justify-between px-4 py-3 text-gray-400 cursor-pointer">
                                 <div className="flex items-center gap-4"><FiCheckSquare className="text-xl" /><span>Tasks</span></div>
                                 <span className="bg-[#0E3A26] text-white text-[10px] px-1.5 py-0.5 rounded font-bold">12+</span>
@@ -78,45 +81,38 @@ const DashboardLayout = () => {
                         </ul>
                     </div>
 
-                    {/* Mobile App Card */}
+                    {/* Mobile App Download img */}
                     <div className="mt-auto border border-gray-100 rounded-[32px] p-6 relative overflow-hidden flex flex-col min-h-[200px] bg-cover bg-center shrink-0"
-                         style={{ backgroundImage: `url(${asideImg})` }}>
+                        style={{ backgroundImage: "url('/asideImg.png')" }}>
                         <div className="absolute inset-0 bg-black/20 z-0"></div>
                         <div className="relative z-10">
                             <div className="w-13 h-13 rounded-full flex items-center justify-center mb-4 shadow-sm">
-                                <img src="/miniPic.png" alt="mini-logo" className="" />
+                                <img src="/miniPic.png" alt="mini-logo" />
                             </div>
                             <h4 className="text-white text-lg leading-tight font-medium">Download our</h4>
                             <h4 className="text-white text-lg font-bold">Mobile App</h4>
                             <p className="text-gray-300 text-[11px] mt-1">Get easy in another way</p>
                         </div>
-                        <button className="relative cursor-pointer z-10 mt-4 w-full bg-[#1B5E3F]/80 backdrop-blur-md text-white py-2.5 rounded-2xl text-sm font-medium hover:bg-[#1B5E3F] transition-all">
-                            Download
-                        </button>
+                        <button className="relative cursor-pointer z-10 mt-4 w-full bg-[#1B5E3F]/80 backdrop-blur-md text-white py-2.5 rounded-2xl text-sm font-medium hover:bg-[#1B5E3F] transition-all">    Download  </button>
                     </div>
                 </nav>
             </aside>
 
             {/* Main Area */}
-            <main className="flex-1 flex flex-col px-4 overflow-hidden">
-                {/* Header */}
+            <main className="flex-1 flex flex-col md:px-4 px-0 overflow-hidden">
                 <header className="flex bg-[#F3F4F6] justify-between rounded-2xl items-center py-4 px-4 mb-2 shrink-0">
-                    
-                    <div className="relative group">
-                        <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
-                            <FiSearch className="text-lg" />
-                        </div>
-                        <input 
-                            type="text" 
-                            placeholder="Search task" 
-                            className="bg-white border-none outline-none focus:ring-2 focus:ring-gray-200 rounded-2xl py-3 pl-12 pr-16 w-[350px] text-sm transition-all"
-                        />
-                        <div className="absolute right-4 top-1/2 -translate-y-1/2 border border-gray-200 rounded-md px-2 py-1 text-[12px] text-gray-900 font-medium">
-                           ⌘ F
+                    <div className="flex items-center gap-4">
+                        {/* Mobile Menu Toggle Button */}
+                        <button className="md:hidden text-gray-600" onClick={() => setIsSidebarOpen(true)}>   <FiMenu size={24} /> </button>
+
+                        <div className="relative group hidden sm:block">
+                            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">  <FiSearch className="text-lg" /> </div>
+                            <input  type="text"  placeholder="Search task" className="bg-white border-none outline-none focus:ring-2 focus:ring-gray-200 rounded-2xl py-3 pl-12 pr-16 lg:w-[350px] md:w-[200px] text-sm transition-all"/>
+                            <div className="absolute right-4 top-1/2 -translate-y-1/2 border border-gray-200 rounded-md px-2 py-1 text-[12px] text-gray-900 font-medium hidden lg:block">   ⌘ F  </div>
                         </div>
                     </div>
 
-                    <div className="flex items-center gap-6">
+                    <div className="flex items-center gap-3 md:gap-6">
                         <div className="flex items-center gap-2">
                             <div className="p-2.5 bg-white rounded-full text-gray-500 cursor-pointer border border-transparent hover:border-gray-200 transition-all"><FiMail /></div>
                             <div className="p-2.5 bg-white rounded-full text-gray-500 cursor-pointer border border-transparent hover:border-gray-200 transition-all"><FiBell /></div>
@@ -124,12 +120,8 @@ const DashboardLayout = () => {
 
                         {/* Profile  */}
                         <div className="flex items-center gap-1">
-                            <img 
-                                src="/user.png" 
-                                alt="user" 
-                                className="w-13  rounded-full"
-                            />
-                            <div className="flex flex-col">
+                            <img  src="/user.png" alt="user"  className="w-10 md:w-13 rounded-full"  />
+                            <div className="hidden sm:flex flex-col">
                                 <p className="text-sm font-bold text-gray-800 leading-none">{user?.name || "Totok Michael"}</p>
                                 <p className="text-[11px] text-gray-400 mt-1">{user?.email || "tmichael20@mail.com"}</p>
                             </div>
@@ -138,7 +130,7 @@ const DashboardLayout = () => {
                 </header>
 
                 {/* Content Area */}
-                <div className="flex-1 overflow-y-auto">
+                <div className="flex-1 overflow-y-auto pt-2">
                     <Outlet />
                 </div>
             </main>
