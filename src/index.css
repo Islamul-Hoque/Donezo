@@ -1,7 +1,12 @@
-/* eslint-disable */
 @import "tailwindcss";
 @plugin "daisyui";
 
-.container {
-  @apply mx-auto px-4;
+.striped-bar {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 5px,
+    rgba(0, 0, 0, 0.1) 5px,
+    rgba(0, 0, 0, 0.1) 10px
+  );
 }
