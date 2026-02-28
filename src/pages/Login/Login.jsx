@@ -59,7 +59,7 @@ const Login = () => {
       Swal.fire({
         icon: 'error',
         title: 'Login Failed',
-        text: err.message || 'Invalid email or password',
+        text: 'Invalid email or password',
         confirmButtonColor: '#1B5E3F',
         background: '#fff',
       });

@@ -1,4 +1,4 @@
-# 🎯 Donezo - Task Management Dashboard
+# Donezo - Task Management Dashboard
 
 **Donezo** is a modern, high-performance task management dashboard built with **React.js (Vite)**. It features a secure **JWT-based authentication** system and an interactive UI powered by **DaisyUI** and **Tailwind CSS**. Designed for productivity, it helps users track projects, monitor team collaboration, and manage time efficiently.
 
@@ -9,7 +9,8 @@
 ## 📸 Dashboard UI
 
 ### Desktop View
-![Dashboard Screenshot](../donezo/src/assets/Dashboard.png)
+![Dashboard Screenshot](https://i.ibb.co.com/WvK02z6z/Dashboard.png)
+
 ---
 
 ## ✨ Key Features

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FiPlus } from 'react-icons/fi';
-import 'react-circular-progressbar/dist/styles.css';
 
 import ProjectProgress from '../../components/ProjectProgress';
 import StatCards from '../../components/StatCards';

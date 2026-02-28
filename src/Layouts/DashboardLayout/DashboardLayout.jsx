@@ -26,10 +26,9 @@ const DashboardLayout = () => {
                 {/* Close Button */}
                 <button className="md:hidden absolute right-4 top-4 text-gray-500" onClick={() => setIsSidebarOpen(false)}> <FiX size={24} /> </button>
 
-                {/* Logo Section */}
-                <div className="flex items-center gap-3 mb-10 ml-2 shrink-0">
-                    <img src={Donezo} alt="logo" className="w-8" />
-                    <span className="text-xl font-bold text-[#111827]">Donezo</span>
+                <div className="flex items-center mb-10 ml-2 shrink-0">
+                    <img src={Donezo} alt="logo" className="w-11" />
+                    <span className="text-[1.3rem] font-bold text-[#111827]">Donezo</span>
                 </div>
 
                 <nav className="flex-1 flex flex-col shrink-0">
