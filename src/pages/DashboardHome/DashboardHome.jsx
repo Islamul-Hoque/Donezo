@@ -47,7 +47,7 @@ const DashboardHome = () => {
           <p className="text-gray-500 mt-1 text-sm">Plan, prioritize, and accomplish your tasks with ease.</p>
         </div>
         <div className="flex items-center justify-between gap-3 w-full md:w-auto">
-          <button className="flex-1 md:flex-none flex items-center justify-center btn cursor-pointer gap-2 bg-linear-to-r from-[#197148] to-[#317139] text-white px-7 py-3 rounded-full font-medium hover:opacity-90 transition-all shadow-sm">   <FiPlus className="text-lg" />  <span className="text-[15px]">Add Project</span> </button>
+          <button className="flex-1 md:flex-none flex items-center justify-center btn cursor-pointer gap-1 bg-linear-to-r from-[#197148] to-[#317139] text-white px-7 py-3 rounded-full font-medium hover:opacity-90 transition-all shadow-sm">   <FiPlus className="text-lg" /><span className="text-[15px]">Add Project</span> </button>
           <button className="flex-1 md:flex-none border btn cursor-pointer border-[#008245] bg-white text-[#0a7535] px-7 py-3 rounded-full font-medium hover:bg-gray-50 transition-all shadow-sm text-[15px]"> Import Data </button>
         </div>
       </div>
