@@ -93,7 +93,7 @@ const Login = () => {
 
       {/* Right side  */}
       <div className=" flex-1 justify-center items-center p-8 md:p-12 h-screen overflow-y-auto bg-transparent">
-        <div className="">
+        <div className=" ">
           <div className="bg-white p-8 md:p-10 rounded-[40px] shadow-xl border border-gray-100">
             <div className="mb-6 text-center">
               <h2 className="text-4xl font-bold text-gray-900 tracking-tight">Sign In</h2>

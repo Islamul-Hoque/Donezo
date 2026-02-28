@@ -18,11 +18,11 @@ const DashboardLayout = () => {
     };
 
     return (
-        <div className="flex h-screen bg-white md:p-4 p-2 font-sans overflow-hidden relative">
+        <div className="flex max-w-7xl mx-auto h-screen bg-white md:p-4 p-2 font-sans overflow-hidden relative">
             {isSidebarOpen && ( <div className="fixed inset-0 bg-black/50 z-40 md:hidden" onClick={() => setIsSidebarOpen(false)} ></div> )}
 
             {/* Sidebar */}
-            <aside className={` fixed inset-y-0 left-0 z-50 w-[270px] bg-[#F3F4F6] transition-transform duration-300 transform md:relative md:translate-x-0 md:rounded-2xl flex flex-col py-6 px-4 h-full overflow-y-auto   ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} `}>
+            <aside className={` fixed inset-y-0 left-0 z-50  w-[270px] bg-[#F3F4F6] transition-transform duration-300 transform md:relative md:translate-x-0 md:rounded-2xl flex flex-col py-6 px-4  overflow-y-auto   ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} `}>
                 {/* Close Button */}
                 <button className="md:hidden absolute right-4 top-4 text-gray-500" onClick={() => setIsSidebarOpen(false)}> <FiX size={24} /> </button>
 
@@ -91,7 +91,7 @@ const DashboardLayout = () => {
             </aside>
 
             {/* Main Area */}
-            <main className="flex-1 flex flex-col md:px-4 px-0 overflow-hidden">
+            <main className="flex-1 flex flex-col md:pr-0 px-4 overflow-hidden">
                 <header className="flex bg-[#F3F4F6] justify-between rounded-2xl items-center py-4 px-4 mb-2 shrink-0">
                     <div className="flex items-center gap-4">
                         {/* Mobile Menu Toggle Button */}
