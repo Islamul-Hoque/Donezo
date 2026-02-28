@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import {FiGrid, FiCheckSquare, FiCalendar, FiBarChart2, FiUsers,  FiSettings, FiHelpCircle, FiLogOut, FiSearch, FiMail, FiBell, FiMenu, FiX } from 'react-icons/fi';
+import User from '../../assets/user.png'
+import Donezo from '../../assets/donezo.png'
+import MiniPic from '../../assets/miniPic.png'
+import DownloadAppBg from '../../assets/downloadAppBg.png'
 
 const DashboardLayout = () => {
     const { logout, user } = useAuth();
@@ -15,27 +19,16 @@ const DashboardLayout = () => {
 
     return (
         <div className="flex h-screen bg-white md:p-4 p-2 font-sans overflow-hidden relative">
-            {isSidebarOpen && (
-                <div 
-                    className="fixed inset-0 bg-black/50 z-40 md:hidden" 
-                    onClick={() => setIsSidebarOpen(false)}
-                ></div>
-            )}
+            {isSidebarOpen && ( <div className="fixed inset-0 bg-black/50 z-40 md:hidden" onClick={() => setIsSidebarOpen(false)} ></div> )}
 
             {/* Sidebar */}
-            <aside className={`
-                fixed inset-y-0 left-0 z-50 w-[280px] bg-[#F3F4F6] transition-transform duration-300 transform
-                md:relative md:translate-x-0 md:rounded-2xl flex flex-col py-8 px-6 h-full overflow-y-auto
-                ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
-            `}>
-                {/* Close Button for Mobile */}
-                <button className="md:hidden absolute right-4 top-4 text-gray-500" onClick={() => setIsSidebarOpen(false)}>
-                    <FiX size={24} />
-                </button>
+            <aside className={` fixed inset-y-0 left-0 z-50 w-[270px] bg-[#F3F4F6] transition-transform duration-300 transform md:relative md:translate-x-0 md:rounded-2xl flex flex-col py-6 px-4 h-full overflow-y-auto   ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} `}>
+                {/* Close Button */}
+                <button className="md:hidden absolute right-4 top-4 text-gray-500" onClick={() => setIsSidebarOpen(false)}> <FiX size={24} /> </button>
 
                 {/* Logo Section */}
                 <div className="flex items-center gap-3 mb-10 ml-2 shrink-0">
-                    <img src="/donezo.png" alt="logo" className="w-8" />
+                    <img src={Donezo} alt="logo" className="w-8" />
                     <span className="text-xl font-bold text-[#111827]">Donezo</span>
                 </div>
 
@@ -53,16 +46,15 @@ const DashboardLayout = () => {
                                     {({ isActive }) => (
                                         <>
                                             {isActive && <div className="absolute left-[-24px] w-1.5 h-8 bg-[#1B5E3F] rounded-r-full"></div>}
-                                            <FiGrid className={`text-xl ${isActive ? 'text-[#1B5E3F]' : ''}`} />
-                                            <span>Dashboard</span>
+                                            <FiGrid className={`text-xl ${isActive ? 'text-[#1B5E3F]' : ''}`} />  <span>Dashboard</span>
                                         </>
                                     )}
                                 </NavLink>
                             </li>
-                            <li className="flex items-center justify-between px-4 py-3 text-gray-400 cursor-pointer">
+                            <NavLink to="/" className="flex items-center justify-between px-4 py-3 text-gray-400 cursor-pointer">
                                 <div className="flex items-center gap-4"><FiCheckSquare className="text-xl" /><span>Tasks</span></div>
-                                <span className="bg-[#0E3A26] text-white text-[10px] px-1.5 py-0.5 rounded font-bold">12+</span>
-                            </li>
+                                <span className="bg-[#0e3a26d8] text-white text-[10px] px-1.5 py-0.5 rounded font-bold">12+</span>
+                            </NavLink>
                             <li className="flex items-center gap-4 px-4 py-3 text-gray-400 cursor-pointer"><FiCalendar className="text-xl" /><span>Calendar</span></li>
                             <li className="flex gap-4 items-center px-4 py-3 text-gray-400 cursor-pointer"><FiBarChart2 className="text-xl" /><span>Analytics</span></li>
                             <li className="flex items-center gap-4 px-4 py-3 text-gray-400 cursor-pointer"><FiUsers className="text-xl" /><span>Team</span></li>
@@ -83,11 +75,11 @@ const DashboardLayout = () => {
 
                     {/* Mobile App Download img */}
                     <div className="mt-auto border border-gray-100 rounded-[32px] p-6 relative overflow-hidden flex flex-col min-h-[200px] bg-cover bg-center shrink-0"
-                        style={{ backgroundImage: "url('/asideImg.png')" }}>
+                        style={{ backgroundImage: `url(${DownloadAppBg})` }}>
                         <div className="absolute inset-0 bg-black/20 z-0"></div>
                         <div className="relative z-10">
                             <div className="w-13 h-13 rounded-full flex items-center justify-center mb-4 shadow-sm">
-                                <img src="/miniPic.png" alt="mini-logo" />
+                                <img src={MiniPic} alt="mini-logo" />
                             </div>
                             <h4 className="text-white text-lg leading-tight font-medium">Download our</h4>
                             <h4 className="text-white text-lg font-bold">Mobile App</h4>
@@ -120,10 +112,10 @@ const DashboardLayout = () => {
 
                         {/* Profile  */}
                         <div className="flex items-center gap-1">
-                            <img  src="/user.png" alt="user"  className="w-10 md:w-13 rounded-full"  />
+                            <img  src={User} alt="user"  className="w-10 md:w-13 rounded-full"  />
                             <div className="hidden sm:flex flex-col">
                                 <p className="text-sm font-bold text-gray-800 leading-none">{user?.name || "Totok Michael"}</p>
-                                <p className="text-[11px] text-gray-400 mt-1">{user?.email || "tmichael20@mail.com"}</p>
+                                <p className="text-[11px] text-gray-400 mt-1">{user?.email }</p>
                             </div>
                         </div>
                     </div>

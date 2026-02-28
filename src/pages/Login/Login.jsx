@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { FiEye, FiEyeOff, FiMail, FiLock, FiCheckCircle, FiCopy, FiZap } from 'react-icons/fi';
 import Swal from 'sweetalert2';
+import Donezo from '../../assets/donezo.png'
 
 const Login = () => {
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();
@@ -77,7 +78,7 @@ const Login = () => {
 
         <div className="text-center bg-[#] text-white p-12 relative z-10 flex flex-col items-center justify-center h-full">
           <div className="inline-block bg-linear-to-br from-green-50 to-green-100 p-4 bg-white/10 backdrop-blur-xl rounded-[32px] mb-8 border border-white/20">
-            <img src="/donezo.png" alt="Donezo" className="w-20" />
+            <img src={Donezo} alt="Donezo" className="w-20" />
           </div>
           <h2 className="text-6xl font-black tracking-tighter mb-6">Donezo.</h2>
           <p className="text-xl text-white/70 leading-relaxed max-w-md mx-auto font-medium"> Elevate your productivity with our intuitive and powerful project management dashboard.</p>

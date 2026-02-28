@@ -10,3 +10,7 @@
     rgba(0, 0, 0, 0.1) 10px
   );
 }
+
+.heading {
+  @apply text-xl md:text-[1.12rem] font-bold md:font-semibold
+}
